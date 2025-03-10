@@ -46,4 +46,7 @@ out/
 .vscode/
 
 ### Log files ###
-*.log
+*.log*
+
+### Local ###
+.DS_Store
