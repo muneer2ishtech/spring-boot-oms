@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import fi.ishtech.base.entity.BaseStandardEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -30,7 +31,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class SalesOrderItem extends BaseIdGenEntity {
+public class SalesOrderItem extends BaseStandardEntity {
 
 	private static final long serialVersionUID = 3971866180515025837L;
 

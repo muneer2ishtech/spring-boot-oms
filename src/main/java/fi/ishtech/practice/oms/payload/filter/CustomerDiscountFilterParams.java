@@ -2,6 +2,7 @@ package fi.ishtech.practice.oms.payload.filter;
 
 import java.math.BigDecimal;
 
+import fi.ishtech.base.payload.filter.BaseStandardEntityFilterParams;
 import fi.ishtech.practice.oms.enums.DiscountTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +15,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class CustomerDiscountFilterParams extends BaseFilterParams {
+public class CustomerDiscountFilterParams extends BaseStandardEntityFilterParams {
 
 	private static final long serialVersionUID = 7680517489065442021L;
 

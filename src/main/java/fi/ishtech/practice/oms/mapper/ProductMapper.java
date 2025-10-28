@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+import fi.ishtech.base.mapper.BaseStandardMapper;
 import fi.ishtech.practice.oms.entity.Product;
 import fi.ishtech.practice.oms.payload.ProductVo;
 
@@ -15,7 +16,7 @@ import fi.ishtech.practice.oms.payload.ProductVo;
  * @author Muneer Ahmed Syed
  */
 @Mapper(componentModel = "spring")
-public interface ProductMapper extends BaseMapper<Product, ProductVo> {
+public interface ProductMapper extends BaseStandardMapper {
 
 	/**
 	 *
@@ -23,11 +24,10 @@ public interface ProductMapper extends BaseMapper<Product, ProductVo> {
 	 * @return {@link ProductVo}
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritConfiguration(name = "toBaseVo")
-	@Mapping(source = "id", target = "id")
+	@InheritConfiguration(name = "toBaseStandardVo")
 	@Mapping(source = "name", target = "name")
 	@Mapping(source = "unitPrice", target = "unitPrice")
-	ProductVo toVo(Product entity);
+	ProductVo toBriefVo(Product entity);
 
 	/**
 	 *
@@ -36,7 +36,7 @@ public interface ProductMapper extends BaseMapper<Product, ProductVo> {
 	 * @return {@link Product} entity
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritInverseConfiguration(name = "toVo")
+	@InheritInverseConfiguration(name = "toBriefVo")
 	Product toExistingEntity(ProductVo vo, @MappingTarget Product entity);
 
 	/**
@@ -45,7 +45,7 @@ public interface ProductMapper extends BaseMapper<Product, ProductVo> {
 	 * @return new {@link Product} entity
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritInverseConfiguration(name = "toVo")
+	@InheritInverseConfiguration(name = "toBriefVo")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "active", constant = "true")
 	Product toNewEntity(ProductVo vo);

@@ -2,6 +2,7 @@ package fi.ishtech.practice.oms.payload;
 
 import java.math.BigDecimal;
 
+import fi.ishtech.base.vo.BaseStandardEntityVo;
 import fi.ishtech.practice.oms.enums.DiscountTypeEnum;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
@@ -15,7 +16,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class CustomerDiscountVo extends BaseEntityVo {
+public class CustomerDiscountVo extends BaseStandardEntityVo {
 
 	private static final long serialVersionUID = 2888935904071079798L;
 

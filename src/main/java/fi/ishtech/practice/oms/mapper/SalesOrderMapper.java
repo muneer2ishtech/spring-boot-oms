@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+import fi.ishtech.base.mapper.BaseStandardMapper;
 import fi.ishtech.practice.oms.entity.SalesOrder;
 import fi.ishtech.practice.oms.payload.SalesOrderVo;
 
@@ -15,7 +16,7 @@ import fi.ishtech.practice.oms.payload.SalesOrderVo;
  * @author Muneer Ahmed Syed
  */
 @Mapper(componentModel = "spring")
-public interface SalesOrderMapper extends BaseMapper<SalesOrder, SalesOrderVo> {
+public interface SalesOrderMapper extends BaseStandardMapper {
 
 	/**
 	 *
@@ -23,14 +24,13 @@ public interface SalesOrderMapper extends BaseMapper<SalesOrder, SalesOrderVo> {
 	 * @return {@link SalesOrderVo}
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritConfiguration(name = "toBaseVo")
-	@Mapping(source = "id", target = "id")
+	@InheritConfiguration(name = "toBaseStandardVo")
 	@Mapping(source = "customerId", target = "customerId")
 	@Mapping(source = "origTotalAmount", target = "origTotalAmount")
 	@Mapping(source = "discountPercent", target = "discountPercent")
 	@Mapping(source = "discountAmount", target = "discountAmount")
 	@Mapping(source = "netAmount", target = "netAmount")
-	SalesOrderVo toVo(SalesOrder entity);
+	SalesOrderVo toBriefVo(SalesOrder entity);
 
 	/**
 	 *
@@ -39,7 +39,7 @@ public interface SalesOrderMapper extends BaseMapper<SalesOrder, SalesOrderVo> {
 	 * @return {@link SalesOrder} entity
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritInverseConfiguration(name = "toVo")
+	@InheritInverseConfiguration(name = "toBriefVo")
 	SalesOrder toExistingEntity(SalesOrderVo vo, @MappingTarget SalesOrder entity);
 
 	/**
@@ -48,7 +48,7 @@ public interface SalesOrderMapper extends BaseMapper<SalesOrder, SalesOrderVo> {
 	 * @return new {@link SalesOrder} entity
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritInverseConfiguration(name = "toVo")
+	@InheritInverseConfiguration(name = "toBriefVo")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "active", constant = "true")
 	@Mapping(target = "origTotalAmount", constant = "0")

@@ -2,6 +2,7 @@ package fi.ishtech.practice.oms.payload;
 
 import java.math.BigDecimal;
 
+import fi.ishtech.base.vo.BaseStandardEntityVo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
@@ -16,7 +17,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class ProductVo extends BaseEntityVo {
+public class ProductVo extends BaseStandardEntityVo {
 
 	private static final long serialVersionUID = -547112558829425772L;
 

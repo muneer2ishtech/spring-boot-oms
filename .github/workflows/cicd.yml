@@ -37,5 +37,5 @@ jobs:
         file: ./Dockerfile
         push: true
         tags: |
-          muneer2ishtech/spring-boot-oms:0.1.0
+          muneer2ishtech/spring-boot-oms:0.2.0-SNAPSHOT
           muneer2ishtech/spring-boot-oms:latest

@@ -1,9 +1,8 @@
 package fi.ishtech.practice.oms.payload.out;
 
-import java.io.Serializable;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import fi.ishtech.base.vo.BaseVo;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,7 @@ import lombok.RequiredArgsConstructor;
  */
 @Getter
 @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-public class JwtResponse implements Serializable {
+public class JwtResponse implements BaseVo {
 
 	private static final long serialVersionUID = -8464016196278556079L;
 

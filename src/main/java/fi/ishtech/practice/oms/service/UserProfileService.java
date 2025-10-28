@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.service;
 
+import fi.ishtech.base.service.BaseStandardNoIdService;
 import fi.ishtech.practice.oms.entity.UserProfile;
 import fi.ishtech.practice.oms.payload.UserProfileVo;
 import fi.ishtech.practice.oms.payload.in.SignupRequest;
@@ -8,7 +9,7 @@ import fi.ishtech.practice.oms.payload.in.SignupRequest;
  *
  * @author Muneer Ahmed Syed
  */
-public interface UserProfileService extends BaseEntityService<UserProfile, UserProfileVo> {
+public interface UserProfileService extends BaseStandardNoIdService<UserProfile, UserProfileVo, Long> {
 
 	/**
 	 * Creates User and UserProfile and default role

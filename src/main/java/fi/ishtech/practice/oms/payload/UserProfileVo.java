@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.payload;
 
+import fi.ishtech.base.vo.BaseStandardNoIdEntityVo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -13,9 +14,11 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class UserProfileVo extends BaseEntityVo {
+public class UserProfileVo extends BaseStandardNoIdEntityVo {
 
 	private static final long serialVersionUID = 5632154533700784881L;
+
+	private Long id;
 
 	@NotBlank
 	private String firstName;

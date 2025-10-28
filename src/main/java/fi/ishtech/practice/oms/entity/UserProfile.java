@@ -3,6 +3,7 @@ package fi.ishtech.practice.oms.entity;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import fi.ishtech.base.entity.BaseStandardNoIdEntity;
 import fi.ishtech.core.i18n.enums.LangEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -26,7 +27,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class UserProfile extends BaseEntity {
+public class UserProfile extends BaseStandardNoIdEntity {
 
 	private static final long serialVersionUID = -6592033605796475336L;
 

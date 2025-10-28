@@ -9,6 +9,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+import fi.ishtech.base.mapper.BaseStandardMapper;
 import fi.ishtech.practice.oms.entity.SalesOrderItem;
 import fi.ishtech.practice.oms.payload.SalesOrderItemVo;
 
@@ -17,7 +18,7 @@ import fi.ishtech.practice.oms.payload.SalesOrderItemVo;
  * @author Muneer Ahmed Syed
  */
 @Mapper(componentModel = "spring")
-public interface SalesOrderItemMapper extends BaseMapper<SalesOrderItem, SalesOrderItemVo> {
+public interface SalesOrderItemMapper extends BaseStandardMapper {
 
 	/**
 	 *
@@ -25,7 +26,7 @@ public interface SalesOrderItemMapper extends BaseMapper<SalesOrderItem, SalesOr
 	 * @return {@link SalesOrderItemVo}
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritConfiguration(name = "toBaseVo")
+	@InheritConfiguration(name = "toBaseStandardVo")
 	@Mapping(source = "salesOrderId", target = "salesOrderId")
 	@Mapping(source = "productId", target = "productId")
 	@Mapping(source = "quantity", target = "quantity")
@@ -34,7 +35,7 @@ public interface SalesOrderItemMapper extends BaseMapper<SalesOrderItem, SalesOr
 	@Mapping(source = "discountPercent", target = "discountPercent")
 	@Mapping(source = "discountAmount", target = "discountAmount")
 	@Mapping(source = "lineAmount", target = "lineAmount")
-	SalesOrderItemVo toVo(SalesOrderItem entity);
+	SalesOrderItemVo toBriefVo(SalesOrderItem entity);
 
 	/**
 	 *
@@ -43,7 +44,7 @@ public interface SalesOrderItemMapper extends BaseMapper<SalesOrderItem, SalesOr
 	 * @return {@link SalesOrderItem} entity
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritInverseConfiguration(name = "toVo")
+	@InheritInverseConfiguration(name = "toBriefVo")
 	SalesOrderItem toExistingEntity(SalesOrderItemVo vo, @MappingTarget SalesOrderItem entity);
 
 	/**
@@ -52,7 +53,7 @@ public interface SalesOrderItemMapper extends BaseMapper<SalesOrderItem, SalesOr
 	 * @return new {@link SalesOrderItem} entity
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritInverseConfiguration(name = "toVo")
+	@InheritInverseConfiguration(name = "toBriefVo")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "active", constant = "true")
 	@Mapping(target = "unitPrice", ignore = true)

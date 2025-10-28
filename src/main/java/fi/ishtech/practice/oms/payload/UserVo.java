@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.payload;
 
+import fi.ishtech.base.vo.BaseStandardEntityVo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -11,7 +12,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class UserVo extends BaseEntityVo {
+public class UserVo extends BaseStandardEntityVo {
 
 	private static final long serialVersionUID = 4782005236210790042L;
 

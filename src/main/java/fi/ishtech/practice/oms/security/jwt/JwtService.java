@@ -11,9 +11,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import fi.ishtech.base.service.BaseService;
 import fi.ishtech.practice.oms.payload.out.JwtResponse;
 import fi.ishtech.practice.oms.security.userdetails.UserDetailsImpl;
-import fi.ishtech.practice.oms.service.BaseService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;

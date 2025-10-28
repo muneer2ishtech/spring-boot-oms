@@ -3,6 +3,7 @@ package fi.ishtech.practice.oms.entity;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import fi.ishtech.base.entity.BaseStandardEntity;
 import fi.ishtech.practice.oms.enums.UserRoleEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,7 +32,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class UserRole extends BaseIdGenEntity {
+public class UserRole extends BaseStandardEntity {
 
 	private static final long serialVersionUID = 4628140404447676736L;
 

@@ -1,18 +1,13 @@
-HELP.md
+*.md
 
 ### Maven ###
 target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+!.mvn
 pom.xml.versionsBackup
 
 ### Gradle ###
 .gradle
 build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### STS ###
 .apt_generated
@@ -23,8 +18,6 @@ build/
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
 .idea
@@ -32,8 +25,6 @@ bin/
 *.iml
 *.ipr
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
 
 ### NetBeans ###
 /nbproject/private/
@@ -47,6 +38,15 @@ out/
 
 ### Log files ###
 *.log*
+
+### Git ###
+.git
+**/.gitignore
+.gitlab-ci.yml
+
+### Docker ###
+*.dockerignore*
+*Dockerfile*
 
 ### Local ###
 .DS_Store

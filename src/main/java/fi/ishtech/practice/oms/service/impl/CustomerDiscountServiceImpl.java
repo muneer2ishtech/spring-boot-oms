@@ -69,7 +69,7 @@ public class CustomerDiscountServiceImpl implements CustomerDiscountService {
 
 		refresh(customerDiscount);
 
-		return customerDiscountMapper.toVo(customerDiscount);
+		return customerDiscountMapper.toSemiDetailVo(customerDiscount);
 	}
 
 	@Override

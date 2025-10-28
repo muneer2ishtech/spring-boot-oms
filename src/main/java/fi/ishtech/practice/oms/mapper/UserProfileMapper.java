@@ -5,6 +5,7 @@ import org.mapstruct.InheritConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import fi.ishtech.base.mapper.BaseStandardNoIdMapper;
 import fi.ishtech.core.i18n.enums.LangEnum;
 import fi.ishtech.practice.oms.entity.UserProfile;
 import fi.ishtech.practice.oms.payload.UserProfileVo;
@@ -15,7 +16,7 @@ import fi.ishtech.practice.oms.payload.in.SignupRequest;
  * @author Muneer Ahmed Syed
  */
 @Mapper(componentModel = "spring")
-public interface UserProfileMapper extends BaseMapper<UserProfile, UserProfileVo> {
+public interface UserProfileMapper extends BaseStandardNoIdMapper {
 
 	/**
 	 *
@@ -23,7 +24,7 @@ public interface UserProfileMapper extends BaseMapper<UserProfile, UserProfileVo
 	 * @return {@link UserProfileVo}
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritConfiguration(name = "toBaseVo")
+	@InheritConfiguration(name = "toBaseStandardNoIdVo")
 	@Mapping(source = "id", target = "id")
 	@Mapping(source = "firstName", target = "firstName")
 	@Mapping(source = "middleName", target = "middleName")
@@ -35,7 +36,7 @@ public interface UserProfileMapper extends BaseMapper<UserProfile, UserProfileVo
 	@Mapping(source = "defaultLang", target = "defaultLang")
 	@Mapping(source = "addressId", target = "addressId")
 	@Mapping(source = "email", target = "email")
-	UserProfileVo toVo(UserProfile entity);
+	UserProfileVo toBriefVo(UserProfile entity);
 
 	/**
 	 *
@@ -46,10 +47,10 @@ public interface UserProfileMapper extends BaseMapper<UserProfile, UserProfileVo
 	 */
 	@BeanMapping(ignoreByDefault = true)
 	@Mapping(target = "id", ignore = true)
+	@Mapping(target = "active", constant = "true")
 	@Mapping(source = "firstName", target = "firstName")
 	@Mapping(source = "lastName", target = "lastName")
 	@Mapping(source = "lang", target = "defaultLang", defaultValue = "en")
-	@Mapping(target = "active", constant = "true")
 	UserProfile toNewEntity(SignupRequest signupRequest);
 
 }

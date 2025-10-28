@@ -2,6 +2,7 @@ package fi.ishtech.practice.oms.payload.filter;
 
 import java.math.BigDecimal;
 
+import fi.ishtech.base.payload.filter.BaseStandardEntityFilterParams;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +15,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class SalesOrderFilterParams extends BaseFilterParams {
+public class SalesOrderFilterParams extends BaseStandardEntityFilterParams {
 
 	private static final long serialVersionUID = -8560701313589032650L;
 

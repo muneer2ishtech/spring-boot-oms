@@ -2,8 +2,8 @@ package fi.ishtech.practice.oms.payload.in;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import fi.ishtech.base.vo.BaseVo;
 import fi.ishtech.core.i18n.enums.LangEnum;
-import fi.ishtech.practice.oms.payload.BaseVo;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

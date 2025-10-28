@@ -7,11 +7,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import fi.ishtech.base.mapper.BaseStandardMapper;
 import fi.ishtech.practice.oms.entity.User;
 import fi.ishtech.practice.oms.entity.UserRole;
 import fi.ishtech.practice.oms.enums.UserRoleEnum;
-import fi.ishtech.practice.oms.mapper.BaseMapper;
-import fi.ishtech.practice.oms.payload.UserRoleVo;
 import fi.ishtech.practice.oms.repo.UserRoleRepo;
 import fi.ishtech.practice.oms.service.UserRoleService;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +33,7 @@ public class UserRoleServiceImpl implements UserRoleService {
 	}
 
 	@Override
-	public BaseMapper<UserRole, UserRoleVo> getMapper() {
+	public BaseStandardMapper getMapper() {
 		// this is needed when we have need admin can see and edit user roles on web page
 		return null;
 	}

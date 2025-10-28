@@ -5,6 +5,7 @@ import org.mapstruct.InheritConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import fi.ishtech.base.mapper.BaseStandardMapper;
 import fi.ishtech.practice.oms.entity.User;
 import fi.ishtech.practice.oms.payload.UserVo;
 import fi.ishtech.practice.oms.payload.in.SignupRequest;
@@ -14,7 +15,7 @@ import fi.ishtech.practice.oms.payload.in.SignupRequest;
  * @author Muneer Ahmed Syed
  */
 @Mapper(componentModel = "spring")
-public interface UserMapper extends BaseMapper<User, UserVo> {
+public interface UserMapper extends BaseStandardMapper {
 
 	/**
 	 *
@@ -26,13 +27,12 @@ public interface UserMapper extends BaseMapper<User, UserVo> {
 	 * @return {@link UserVo}
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritConfiguration(name = "toBaseVo")
-	@Mapping(source = "id", target = "id")
+	@InheritConfiguration(name = "toBaseStandardVo")
 	@Mapping(source = "username", target = "username")
 	@Mapping(source = "email", target = "email")
 	@Mapping(source = "forceChangePassword", target = "forceChangePassword")
 	@Mapping(source = "emailVerified", target = "emailVerified")
-	UserVo toVo(User entity);
+	UserVo toBriefVo(User entity);
 
 	@BeanMapping(ignoreByDefault = true)
 	@Mapping(target = "id", ignore = true)

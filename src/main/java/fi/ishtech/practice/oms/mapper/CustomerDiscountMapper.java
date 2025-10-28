@@ -7,6 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingTarget;
 
+import fi.ishtech.base.mapper.BaseStandardMapper;
 import fi.ishtech.practice.oms.entity.CustomerDiscount;
 import fi.ishtech.practice.oms.payload.CustomerDiscountVo;
 
@@ -15,7 +16,7 @@ import fi.ishtech.practice.oms.payload.CustomerDiscountVo;
  * @author Muneer Ahmed Syed
  */
 @Mapper(componentModel = "spring")
-public interface CustomerDiscountMapper extends BaseMapper<CustomerDiscount, CustomerDiscountVo> {
+public interface CustomerDiscountMapper extends BaseStandardMapper {
 
 	/**
 	 *
@@ -23,15 +24,14 @@ public interface CustomerDiscountMapper extends BaseMapper<CustomerDiscount, Cus
 	 * @return {@link CustomerDiscountVo}
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritConfiguration(name = "toBaseVo")
-	@Mapping(source = "id", target = "id")
+	@InheritConfiguration(name = "toBaseStandardVo")
 	@Mapping(source = "customerId", target = "customerId")
 	@Mapping(source = "productId", target = "productId")
 	@Mapping(source = "discountType", target = "discountType")
 	@Mapping(source = "discountPercent", target = "discountPercent")
 	@Mapping(source = "buyQuantity", target = "buyQuantity")
 	@Mapping(source = "payQuantity", target = "payQuantity")
-	CustomerDiscountVo toVo(CustomerDiscount entity);
+	CustomerDiscountVo toBriefVo(CustomerDiscount entity);
 
 	/**
 	 *
@@ -40,7 +40,7 @@ public interface CustomerDiscountMapper extends BaseMapper<CustomerDiscount, Cus
 	 * @return {@link CustomerDiscount} entity
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritInverseConfiguration(name = "toVo")
+	@InheritInverseConfiguration(name = "toBriefVo")
 	CustomerDiscount toExistingEntity(CustomerDiscountVo vo, @MappingTarget CustomerDiscount entity);
 
 	/**
@@ -49,7 +49,7 @@ public interface CustomerDiscountMapper extends BaseMapper<CustomerDiscount, Cus
 	 * @return new {@link CustomerDiscount} entity
 	 */
 	@BeanMapping(ignoreByDefault = true)
-	@InheritConfiguration(name = "toExistingEntity")
+	@InheritInverseConfiguration(name = "toBriefVo")
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "active", constant = "true")
 	CustomerDiscount toNewEntity(CustomerDiscountVo vo);

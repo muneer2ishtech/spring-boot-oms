@@ -70,7 +70,7 @@ public class ProductServiceImpl implements ProductService {
 
 		refresh(product);
 
-		return productMapper.toVo(product);
+		return productMapper.toSemiDetailVo(product);
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.math.BigDecimal;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import fi.ishtech.base.entity.BaseStandardEntity;
 import fi.ishtech.practice.oms.enums.DiscountTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,7 +34,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class CustomerDiscount extends BaseIdGenEntity {
+public class CustomerDiscount extends BaseStandardEntity {
 
 	private static final long serialVersionUID = -4957579670535741482L;
 

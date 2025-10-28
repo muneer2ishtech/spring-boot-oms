@@ -95,6 +95,17 @@ mvn clean install
 mvn spring-boot:run
 ```
 
+### Docker
+
+```
+docker build --progress=plain --no-cache -t "$(./mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout):$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)" -f build.Dockerfile .
+
+```
+
+```
+docker-compose -f local-docker-compose.yml up --build
+
+```
 
 ### Test
 

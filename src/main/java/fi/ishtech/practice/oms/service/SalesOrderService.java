@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.service;
 
+import fi.ishtech.base.service.BaseStandardService;
 import fi.ishtech.practice.oms.entity.CustomerDiscount;
 import fi.ishtech.practice.oms.entity.SalesOrder;
 import fi.ishtech.practice.oms.entity.SalesOrderItem;
@@ -9,7 +10,7 @@ import fi.ishtech.practice.oms.payload.SalesOrderVo;
  *
  * @author Muneer Ahmed Syed
  */
-public interface SalesOrderService extends BaseEntityService<SalesOrder, SalesOrderVo> {
+public interface SalesOrderService extends BaseStandardService<SalesOrder, SalesOrderVo> {
 
 	/**
 	 * Creates a new SalesOrder

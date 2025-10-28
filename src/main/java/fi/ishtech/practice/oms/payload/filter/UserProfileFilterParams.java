@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.payload.filter;
 
+import fi.ishtech.base.payload.filter.BaseStandardNoIdEntityFilterParams;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,7 +13,7 @@ import lombok.ToString;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
-public class UserProfileFilterParams extends BaseFilterParams {
+public class UserProfileFilterParams extends BaseStandardNoIdEntityFilterParams {
 
 	private static final long serialVersionUID = -6062451974582082883L;
 
