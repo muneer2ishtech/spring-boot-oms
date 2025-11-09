@@ -47,6 +47,7 @@
 
 		<ishtech-base-jpa.version>3.0.0</ishtech-base-jpa.version>
 		<ishtech-i18n.version>5.0.0</ishtech-i18n.version>
+		<ishtech-springboot-jwtauth.version>0.6.0-SNAPSHOT</ishtech-springboot-jwtauth.version>
 
 		<mapstruct.version>1.6.3</mapstruct.version>
 		<jjwt.version>0.13.0</jjwt.version>
@@ -90,6 +91,11 @@
 			<groupId>fi.ishtech.core</groupId>
 			<artifactId>ishtech-i18n</artifactId>
 			<version>${ishtech-i18n.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>fi.ishtech.springboot</groupId>
+			<artifactId>ishtech-springboot-jwtauth-api</artifactId>
+			<version>${ishtech-springboot-jwtauth.version}</version>
 		</dependency>
 
 		<dependency>
