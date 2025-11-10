@@ -3,13 +3,21 @@ Order Management system using Spring Boot Rest APIs
 
 
 ## Tech stack
-- Java - 25
-- spring-boot - 3.5.7
-- MySQL / MariaDB
-- Docker
-- Flyway
+- Java: 25
+- Spring Boot: 3.5.7
+- Database: MariaDB / MySQL
+- Database Migration: Flyway
+- Containerization: Docker
+
+##
+
+[GIT](https://github.com/muneer2ishtech/springboot-oms)
+
 
 ## Design
+- [ishtech-jpa-base](https://github.com/ishtech/ishtech-base-jpa) - Foundational JPA and other base classes
+- [ishtech-springboot-jwtauth](https://github.com/ishtech/ishtech-springboot-jwtauth) - For Authentiation & Authorization
+
 ### Assumptions:
 1. No multi-tenancy
 1. No VATs (or other taxes)
@@ -56,8 +64,16 @@ Table [t_sales_order] contains physical column name [customer_id] referred to by
 
 ## APIs
 
-- See [CURL-INFO.md](./CURL-INFO.md) for sample RestAPI requests
-- See API Docs [swagger-ui.html](http://localhost:8080/swagger-ui.html) (App should be running)
+- For details you can see swagger documentation
+    - [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+    - [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+- Note: Check and update URI and PORT on which application is running
+
+- For API request/response samples:
+    - See [CURL-INFO.md](./CURL-INFO.md)
+
+- For Authentiation & Authorization APIs:
+    - See [ishtech-springboot-jwtauth](https://github.com/ishtech/ishtech-springboot-jwtauth)
 
 
 ## DB
@@ -68,10 +84,11 @@ Table [t_sales_order] contains physical column name [customer_id] referred to by
 
 - I have customized docker for various databases
     - For MariaDB
-        - See [https://github.com/IshTech/docker-mysql/tree/main/mariadb](https://github.com/IshTech/docker-mysql/tree/main/mariadb)
+        - See [https://github.com/IshTech/docker-db/tree/main/mariadb](https://github.com/IshTech/docker-db/tree/main/mariadb)
     - For MySQL
-        - See [https://github.com/IshTech/docker-mysql/tree/main/mysql](https://github.com/IshTech/docker-mysql/tree/main/mysql)
-- Login to DB as root and run [init_db.sql](src/test/resources/db/init_db.sql) to setup DB Schema, DB User and Grant privileges
+        - See [https://github.com/IshTech/docker-db/tree/main/mysql](https://github.com/IshTech/docker-db/tree/main/mysql)
+
+- Login to DB as `root` and run [init_db.sql](src/test/resources/db/init_db.sql) to setup DB Schema, DB User and Grant privileges
 
 #### DB Access
 
@@ -83,6 +100,17 @@ or
 ```
 mysql -u istech_oms_dev_user -pishtech_oms_dev_pass -D ishtech_oms_dev_db
 ```
+
+### Flyway migration files
+- Path `src/main/resources/db/migration/`
+- To create migration files with date and time in the file name
+    - E.g. `V20251021_103045__create_table_book.sql`
+
+```
+touch src/main/resources/db/migration/V$(date +"%Y%m%d_%H%M%S")__create_table_TODO_PUT_TABLE_NAME_WITHOUT_PREFIX.sql
+
+```
+
 
 ## Build and Run
 
@@ -114,9 +142,13 @@ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 ```
 docker build . \
---build-arg SERVER_PORT=8080 \
--t "$(./mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout):$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout)"
+  --build-arg SERVER_PORT=8080 \
+  -t "$(./mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout 2>/dev/null):$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout 2>/dev/null)"
 
+```
+
+```
+--mount=type=bind,source=$HOME/.m2,target=/root/.m2
 ```
 
 ### Run with docker compose
