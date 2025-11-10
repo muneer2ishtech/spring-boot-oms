@@ -2,7 +2,6 @@ package fi.ishtech.practice.oms.controller;
 
 import java.net.URI;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.validation.Valid;
 
 import org.springframework.data.domain.Page;
@@ -28,10 +27,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import fi.ishtech.practice.oms.payload.SalesOrderItemVo;
 import fi.ishtech.practice.oms.payload.SalesOrderVo;
 import fi.ishtech.practice.oms.payload.filter.SalesOrderFilterParams;
-import fi.ishtech.practice.oms.security.service.AuthInfoService;
 import fi.ishtech.practice.oms.service.SalesOrderItemService;
 import fi.ishtech.practice.oms.service.SalesOrderService;
 import fi.ishtech.practice.oms.spec.SalesOrderSpec;
+import fi.ishtech.springboot.jwtauth.service.AuthInfoService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,9 +51,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 @Slf4j
 public class SalesOrderController {
 
-	@Autowired
-	private AuthInfoService authInfoService;
-
+	private final AuthInfoService authInfoService;
 	private final SalesOrderService salesOrderService;
 	private final SalesOrderItemService salesOrderItemService;
 
