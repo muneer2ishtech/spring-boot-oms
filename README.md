@@ -1,4 +1,4 @@
-# spring-boot-oms
+# springboot-oms
 Order Management system using Spring Boot Rest APIs
 
 ## Run without build
