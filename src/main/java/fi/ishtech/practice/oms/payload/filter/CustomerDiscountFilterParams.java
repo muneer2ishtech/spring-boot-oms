@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import fi.ishtech.base.payload.filter.BaseStandardEntityFilterParams;
 import fi.ishtech.practice.oms.enums.DiscountTypeEnum;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

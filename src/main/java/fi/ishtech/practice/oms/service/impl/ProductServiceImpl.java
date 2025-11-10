@@ -1,5 +1,8 @@
 package fi.ishtech.practice.oms.service.impl;
 
+import jakarta.persistence.EntityManager;
+import jakarta.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -10,10 +13,10 @@ import fi.ishtech.practice.oms.mapper.ProductMapper;
 import fi.ishtech.practice.oms.payload.ProductVo;
 import fi.ishtech.practice.oms.repo.ProductRepo;
 import fi.ishtech.practice.oms.service.ProductService;
-import io.jsonwebtoken.lang.Assert;
-import jakarta.persistence.EntityManager;
-import jakarta.validation.Valid;
+
 import lombok.extern.slf4j.Slf4j;
+
+import io.jsonwebtoken.lang.Assert;
 
 /**
  *

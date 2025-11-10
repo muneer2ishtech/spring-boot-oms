@@ -2,9 +2,11 @@ package fi.ishtech.practice.oms.payload;
 
 import java.math.BigDecimal;
 
+import jakarta.validation.constraints.NotNull;
+
 import fi.ishtech.base.vo.BaseStandardEntityVo;
 import fi.ishtech.practice.oms.enums.DiscountTypeEnum;
-import jakarta.validation.constraints.NotNull;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

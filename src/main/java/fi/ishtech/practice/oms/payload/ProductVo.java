@@ -2,10 +2,12 @@ package fi.ishtech.practice.oms.payload;
 
 import java.math.BigDecimal;
 
-import fi.ishtech.base.vo.BaseStandardEntityVo;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+
+import fi.ishtech.base.vo.BaseStandardEntityVo;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

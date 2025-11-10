@@ -3,6 +3,7 @@ package fi.ishtech.practice.oms.payload.filter;
 import java.math.BigDecimal;
 
 import fi.ishtech.base.payload.filter.BaseStandardEntityFilterParams;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

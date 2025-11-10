@@ -3,8 +3,10 @@ package fi.ishtech.practice.oms.payload;
 import java.math.BigDecimal;
 import java.util.Set;
 
-import fi.ishtech.base.vo.BaseStandardEntityVo;
 import jakarta.validation.Valid;
+
+import fi.ishtech.base.vo.BaseStandardEntityVo;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;

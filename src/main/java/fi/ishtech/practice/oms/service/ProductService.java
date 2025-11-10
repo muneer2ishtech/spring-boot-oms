@@ -1,9 +1,10 @@
 package fi.ishtech.practice.oms.service;
 
+import jakarta.validation.Valid;
+
 import fi.ishtech.base.service.BaseStandardService;
 import fi.ishtech.practice.oms.entity.Product;
 import fi.ishtech.practice.oms.payload.ProductVo;
-import jakarta.validation.Valid;
 
 /**
  *

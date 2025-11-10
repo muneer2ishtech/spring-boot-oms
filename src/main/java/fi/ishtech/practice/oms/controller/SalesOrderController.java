@@ -3,6 +3,8 @@ package fi.ishtech.practice.oms.controller;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.validation.Valid;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -29,13 +31,13 @@ import fi.ishtech.practice.oms.security.service.AuthInfoService;
 import fi.ishtech.practice.oms.service.SalesOrderItemService;
 import fi.ishtech.practice.oms.service.SalesOrderService;
 import fi.ishtech.practice.oms.spec.SalesOrderSpec;
+import lombok.extern.slf4j.Slf4j;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
-import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Controller for SalesOrder
@@ -212,4 +214,5 @@ public class SalesOrderController {
 
 		return ResponseEntity.ok().build();
 	}
+
 }

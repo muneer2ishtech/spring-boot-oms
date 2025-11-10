@@ -2,6 +2,11 @@ package fi.ishtech.practice.oms.spec;
 
 import java.util.List;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
+
 import fi.ishtech.base.spec.BaseStandardSpec;
 import fi.ishtech.practice.oms.entity.CustomerDiscount;
 import fi.ishtech.practice.oms.entity.CustomerDiscount_;
@@ -12,10 +17,6 @@ import fi.ishtech.practice.oms.entity.UserProfile_;
 import fi.ishtech.practice.oms.payload.filter.CustomerDiscountFilterParams;
 import fi.ishtech.practice.oms.payload.filter.ProductFilterParams;
 import fi.ishtech.practice.oms.payload.filter.UserProfileFilterParams;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.Join;
-import jakarta.persistence.criteria.Predicate;
-import jakarta.persistence.criteria.Root;
 
 /**
  *
