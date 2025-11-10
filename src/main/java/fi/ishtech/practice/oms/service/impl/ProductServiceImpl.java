@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 
 import fi.ishtech.practice.oms.entity.Product;
 import fi.ishtech.practice.oms.mapper.ProductMapper;
@@ -15,8 +16,6 @@ import fi.ishtech.practice.oms.repo.ProductRepo;
 import fi.ishtech.practice.oms.service.ProductService;
 
 import lombok.extern.slf4j.Slf4j;
-
-import io.jsonwebtoken.lang.Assert;
 
 /**
  *
@@ -64,7 +63,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductVo updateAndMapToVo(@Valid ProductVo productVo) {
-		Assert.notNull(productVo.getId());
+		Assert.notNull(productVo.getId(), "Product id cannot be null");
 
 		Product product = this.findOneByIdOrElseThrow(productVo.getId());
 
