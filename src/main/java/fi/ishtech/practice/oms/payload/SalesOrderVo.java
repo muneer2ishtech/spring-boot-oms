@@ -6,6 +6,7 @@ import java.util.Set;
 import jakarta.validation.Valid;
 
 import fi.ishtech.base.vo.BaseStandardEntityVo;
+import fi.ishtech.springboot.jwtauth.dto.UserProfileDto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,7 +37,7 @@ public class SalesOrderVo extends BaseStandardEntityVo {
 
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	private UserProfileVo customer;
+	private UserProfileDto customer;
 
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude

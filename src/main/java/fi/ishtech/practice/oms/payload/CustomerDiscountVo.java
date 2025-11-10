@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import fi.ishtech.base.vo.BaseStandardEntityVo;
 import fi.ishtech.practice.oms.enums.DiscountTypeEnum;
+import fi.ishtech.springboot.jwtauth.dto.UserProfileDto;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -38,7 +39,7 @@ public class CustomerDiscountVo extends BaseStandardEntityVo {
 
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude
-	private UserProfileVo customer;
+	private UserProfileDto customer;
 
 	@EqualsAndHashCode.Exclude
 	@ToString.Exclude

@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import fi.ishtech.base.payload.filter.BaseStandardEntityFilterParams;
 import fi.ishtech.practice.oms.enums.DiscountTypeEnum;
+import fi.ishtech.springboot.jwtauth.payload.params.UserProfileFilterParams;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

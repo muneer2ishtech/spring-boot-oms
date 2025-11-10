@@ -18,6 +18,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import fi.ishtech.base.entity.BaseStandardEntity;
 import fi.ishtech.practice.oms.enums.DiscountTypeEnum;
+import fi.ishtech.springboot.jwtauth.entity.UserProfile;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

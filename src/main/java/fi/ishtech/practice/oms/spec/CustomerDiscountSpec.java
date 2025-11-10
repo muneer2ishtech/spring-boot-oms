@@ -12,11 +12,11 @@ import fi.ishtech.practice.oms.entity.CustomerDiscount;
 import fi.ishtech.practice.oms.entity.CustomerDiscount_;
 import fi.ishtech.practice.oms.entity.Product;
 import fi.ishtech.practice.oms.entity.Product_;
-import fi.ishtech.practice.oms.entity.UserProfile;
-import fi.ishtech.practice.oms.entity.UserProfile_;
 import fi.ishtech.practice.oms.payload.filter.CustomerDiscountFilterParams;
 import fi.ishtech.practice.oms.payload.filter.ProductFilterParams;
-import fi.ishtech.practice.oms.payload.filter.UserProfileFilterParams;
+import fi.ishtech.springboot.jwtauth.entity.UserProfile;
+import fi.ishtech.springboot.jwtauth.entity.UserProfile_;
+import fi.ishtech.springboot.jwtauth.payload.params.UserProfileFilterParams;
 
 /**
  *
