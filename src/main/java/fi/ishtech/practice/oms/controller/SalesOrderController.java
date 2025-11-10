@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PostAuthorize;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.Assert;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -106,25 +107,12 @@ public class SalesOrderController {
 			consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	// @formatter:on
+	@PreAuthorize("hasAnyAuthority('ROLE_ADMIN') || #salesOrderVo.customerId == authentication.principal.id")
 	public ResponseEntity<Long> createSalesOrder(@Valid @RequestBody SalesOrderVo salesOrderVo) {
 		log.trace("salesOrderVo:{}", salesOrderVo);
 
 		Assert.isNull(salesOrderVo.getId(), "id should be null");
 		Assert.notEmpty(salesOrderVo.getSalesOrderItems(), "Should have at least one Sales Order Item");
-
-		if (authInfoService.isAdmin()) {
-			Assert.notNull(salesOrderVo.getCustomerId(), "customerId cannot be null");
-		} else {
-			var loggedInUserId = authInfoService.getUserId();
-			if (salesOrderVo.getCustomerId() == null) {
-				salesOrderVo.setCustomerId(loggedInUserId);
-			} else if (!salesOrderVo.getCustomerId().equals(loggedInUserId)) {
-				log.error("User({}) cannot create SalesOrder for others", loggedInUserId);
-				throw new HttpClientErrorException(HttpStatus.UNAUTHORIZED, "Cannot create SalesOrder for others");
-			} else {
-				// ok
-			}
-		}
 
 		var result = salesOrderService.create(salesOrderVo);
 
