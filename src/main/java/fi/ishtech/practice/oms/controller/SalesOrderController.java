@@ -32,6 +32,8 @@ import fi.ishtech.practice.oms.security.service.AuthInfoService;
 import fi.ishtech.practice.oms.service.SalesOrderItemService;
 import fi.ishtech.practice.oms.service.SalesOrderService;
 import fi.ishtech.practice.oms.spec.SalesOrderSpec;
+
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import io.swagger.v3.oas.annotations.Operation;
@@ -46,17 +48,15 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
  * @author Muneer Ahmed Syed
  */
 @RestController
+@RequiredArgsConstructor
 @Slf4j
 public class SalesOrderController {
 
 	@Autowired
 	private AuthInfoService authInfoService;
 
-	@Autowired
-	private SalesOrderService salesOrderService;
-
-	@Autowired
-	private SalesOrderItemService salesOrderItemService;
+	private final SalesOrderService salesOrderService;
+	private final SalesOrderItemService salesOrderItemService;
 
 	/**
 	 * Gets public info of companies found by filter params
