@@ -1,6 +1,6 @@
 CREATE TABLE t_customer_discount (
   id                 BIGINT UNSIGNED  NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  customer_id        BIGINT UNSIGNED  NOT NULL,
+  customer_id        BIGINT           NOT NULL,
   product_id         BIGINT UNSIGNED      NULL,
   discount_type      ENUM('SALES_ORDER_PERCENT', 'PRODUCT_PERCENT', 'PRODUCT_BUY_X_PAY_Y') NOT NULL,
   discount_percent   DECIMAL(5, 4)        NULL,
