@@ -3,7 +3,7 @@ FROM eclipse-temurin:25-jdk AS build
 
 COPY . .
 
-ARG MAVEN_CLI_OPTS="-B -q"
+ARG MAVEN_CLI_OPTS="-B -q -s .mvn/settings.xml"
 
 RUN ./mvnw $MAVEN_CLI_OPTS clean install -DskipTests=true
 
