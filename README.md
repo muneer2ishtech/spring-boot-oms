@@ -137,9 +137,11 @@ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 #### Docker build
 
+- arg for custom `SERVER_PORT` is optional, you can change to desired value or skip, if skipped it will use default `8080`
+
 ```
 docker build . \
-  --build-arg SERVER_PORT=8080 \
+  --build-arg SERVER_PORT=8383 \
   -t "muneer2ishtech/$(./mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout 2>/dev/null):$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout 2>/dev/null)"
 
 ```
@@ -156,9 +158,13 @@ docker build . \
 
 - To build and start
     - You can prefix with env vars as in below example
+    - Below args are optional, you can change to desired value or skip, if skipped they will use default value
+        - `DB_PORT` if skipped DB will be exposed on default `3306`
+        - `SERVER_PORT_REMOTE` if skipped spring-boot app will run on default `8080`
+        - `SERVER_PORT_LOCAL` if skipped spring-boot app will be exposed on default `8080`
 
 ```
-SERVER_PORT=8383 DB_PORT=23306 APP_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout 2>/dev/null) \
+SERVER_PORT_LOCAL=8282 DB_PORT=23306 APP_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout 2>/dev/null) \
 docker-compose up --build
 
 ```

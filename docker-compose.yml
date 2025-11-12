@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        SERVER_PORT: ${SERVER_PORT:-8080}
+        SERVER_PORT: ${SERVER_PORT_REMOTE:-${SERVER_PORT:-8080}}
         APP_VERSION: ${APP_VERSION}
     image: muneer2ishtech/ishtech-springboot-oms:${APP_VERSION:+$APP_VERSION}
     container_name: ishtech_springboot_oms_app
@@ -14,14 +14,14 @@ services:
       - SPRING_FLYWAY_URL=jdbc:mariadb://ishtech-springboot-oms-mariadb:3306/ishtech_oms_dev_db
       - TZ=${TZ:-Europe/Helsinki}
     ports:
-      - "${SERVER_PORT:-8080}:${SERVER_PORT:-8080}"
+      - "${SERVER_PORT_LOCAL:-${SERVER_PORT:-8080}}:${SERVER_PORT_REMOTE:-${SERVER_PORT:-8080}}"
     depends_on:
       ishtech-springboot-oms-mariadb:
         condition: service_healthy
     networks:
       - ishtech-springboot-oms-network
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:${SERVER_PORT:-8080}/actuator/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:${SERVER_PORT_LOCAL:-${SERVER_PORT:-8080}}/actuator/health"]
       start_period: 60s
 
   ishtech-springboot-oms-mariadb:
