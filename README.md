@@ -130,7 +130,7 @@ touch src/main/resources/db/migration/V$(date +"%Y%m%d_%H%M%S")__create_table_TO
 #### Local Maven Run
 
 ```
-mvn spring-boot:run -Dspring-boot.run.profiles=dev
+./mvnw spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
 ### Docker
@@ -154,7 +154,7 @@ docker build . \
     - `docker compose stop`
 
 - To stop and remove including volumes and built images
-    - `docker-compose down -v --rmi=local`
+    - `docker compose down -v --rmi=local`
 
 - To build and start
     - You can prefix with env vars as in below example
@@ -165,6 +165,6 @@ docker build . \
 
 ```
 SERVER_PORT_LOCAL=8282 DB_PORT=23306 APP_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout 2>/dev/null) \
-docker-compose up --build
+docker compose up --build
 
 ```
