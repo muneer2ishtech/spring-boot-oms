@@ -43,10 +43,9 @@ out/
 .git
 **/.gitignore
 .gitlab-ci.yml
+.github
 
 ### Docker ###
-*.dockerignore*
-*Dockerfile*
 
 ### Local ###
 .DS_Store

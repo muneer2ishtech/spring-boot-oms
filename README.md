@@ -79,7 +79,7 @@ Table [t_sales_order] contains physical column name [customer_id] referred to by
 ## DB
 
 ### Local
-- You need local instance or docker of local MariaDB / MySQL
+- You need local instance or docker of MariaDB / MySQL
     - To run using MySQL instead of MariaDB, comment out MariaDB portions and uncomment MySQL portions in `pom.xml` and `application-xxx.properties`
 
 - I have customized docker for various databases
@@ -91,15 +91,10 @@ Table [t_sales_order] contains physical column name [customer_id] referred to by
 - Login to DB as `root` and run [init_db.sql](src/test/resources/db/init_db.sql) to setup DB Schema, DB User and Grant privileges
 
 #### DB Access
-
-```
-mariadb -u istech_oms_dev_user -pishtech_oms_dev_pass -D ishtech_oms_dev_db
-```
-or
-
-```
-mysql -u istech_oms_dev_user -pishtech_oms_dev_pass -D ishtech_oms_dev_db
-```
+- Connect to MariaDB
+    - `mariadb -u istech_oms_dev_user -pishtech_oms_dev_pass -D ishtech_oms_dev_db`
+- Connect to MySQL
+    - `mysql -u istech_oms_dev_user -pishtech_oms_dev_pass -D ishtech_oms_dev_db`
 
 ### Flyway migration files
 - Path `src/main/resources/db/migration/`
@@ -116,7 +111,9 @@ touch src/main/resources/db/migration/V$(date +"%Y%m%d_%H%M%S")__create_table_TO
 
 - Ensure the port, db properties etc are correct in application-xxx.properties
 
-### Local Maven Build
+### Maven
+
+#### Local Maven Build
 
 - Build without tests
 
@@ -130,7 +127,7 @@ touch src/main/resources/db/migration/V$(date +"%Y%m%d_%H%M%S")__create_table_TO
 ./mvnw clean install
 ```
 
-- Run
+#### Local Maven Run
 
 ```
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
@@ -143,30 +140,25 @@ mvn spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 docker build . \
   --build-arg SERVER_PORT=8080 \
-  -t "$(./mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout 2>/dev/null):$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout 2>/dev/null)"
+  -t "muneer2ishtech/$(./mvnw help:evaluate -Dexpression=project.artifactId -q -DforceStdout 2>/dev/null):$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout 2>/dev/null)"
 
 ```
 
-```
---mount=type=bind,source=$HOME/.m2,target=/root/.m2
-```
-
-### Run with docker compose
+#### Run with docker compose
 
 - Docker compose is self contained and has both spring-boot application and mariadb is present, so  you don't need anything else other than docker
 
 - To stop if running
+    - `docker compose stop`
 
-```
-docker compose stop
-
-```
+- To stop and remove including volumes
+    - `docker compose down -v`
 
 - To build and start
     - You can prefix with env vars as in below example
 
 ```
-SERVER_PORT=8383 DB_PORT=23306 APP_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout) \
+SERVER_PORT=8383 DB_PORT=23306 APP_VERSION=$(./mvnw help:evaluate -Dexpression=project.version -q -DforceStdout 2>/dev/null) \
 docker-compose up --build
 
 ```
