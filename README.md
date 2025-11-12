@@ -153,8 +153,8 @@ docker build . \
 - To stop if running
     - `docker compose stop`
 
-- To stop and remove including volumes
-    - `docker compose down -v`
+- To stop and remove including volumes and built images
+    - `docker-compose down -v --rmi=local`
 
 - To build and start
     - You can prefix with env vars as in below example
