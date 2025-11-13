@@ -9,10 +9,12 @@ import org.mapstruct.MappingTarget;
 
 import fi.ishtech.base.mapper.BaseStandardMapper;
 import fi.ishtech.practice.oms.entity.Product;
+import fi.ishtech.practice.oms.entity.ProductDocument;
 import fi.ishtech.practice.oms.payload.ProductVo;
 
 /**
  * Mapper for {@link ProductVo} to {@link Product} entity and vice-versa<br>
+ * And Map to and from {@link ProductDocument}
  *
  * @author Muneer Ahmed Syed
  */
@@ -50,5 +52,31 @@ public interface ProductMapper extends BaseStandardMapper {
 	@Mapping(target = "id", ignore = true)
 	@Mapping(target = "active", constant = "true")
 	Product toNewEntity(ProductVo vo);
+
+	/**
+	 *
+	 * @param vo {@link ProductVo}
+	 * @return new {@link Product} entity
+	 */
+	@BeanMapping(ignoreByDefault = true)
+	@Mapping(source = "id", target = "id")
+	@Mapping(source = "name", target = "name")
+	@Mapping(source = "unitPrice", target = "unitPrice")
+	@Mapping(source = "active", target = "active")
+	@Mapping(source = "description", target = "description")
+	ProductVo toBriefVo(ProductDocument document);
+
+	/**
+	 *
+	 * @param vo {@link ProductVo}
+	 * @return new {@link Product} entity
+	 */
+	@BeanMapping(ignoreByDefault = true)
+	@Mapping(source = "id", target = "id")
+	@Mapping(source = "name", target = "name")
+	@Mapping(source = "unitPrice", target = "unitPrice")
+	@Mapping(source = "active", target = "active")
+	@Mapping(source = "description", target = "description")
+	ProductDocument toDocument(Product product);
 
 }

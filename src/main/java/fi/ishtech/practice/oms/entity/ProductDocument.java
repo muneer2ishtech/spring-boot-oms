@@ -30,4 +30,7 @@ public class ProductDocument {
 	@Field(type = FieldType.Boolean)
 	private boolean isActive;
 
+	@Field(type = FieldType.Text)
+	private String description;
+
 }

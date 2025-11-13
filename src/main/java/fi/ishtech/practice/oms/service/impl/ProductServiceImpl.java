@@ -18,9 +18,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+import org.springframework.util.StringUtils;
 
 import fi.ishtech.practice.oms.entity.Product;
 import fi.ishtech.practice.oms.entity.ProductDocument;
+import fi.ishtech.practice.oms.entity.Product_;
 import fi.ishtech.practice.oms.mapper.ProductMapper;
 import fi.ishtech.practice.oms.payload.ProductVo;
 import fi.ishtech.practice.oms.payload.filter.ProductFilterParams;
@@ -82,7 +84,7 @@ public class ProductServiceImpl implements ProductService {
 		log.info("New Product({}) created", product.getId());
 
 		// Sync to Elasticsearch
-		ProductDocument document = mapToDocument(product);
+		ProductDocument document = productMapper.toDocument(product);
 		productDocumentRepo.save(document);
 
 		return product;
@@ -98,7 +100,7 @@ public class ProductServiceImpl implements ProductService {
 		product = productRepo.saveAndFlush(product);
 
 		// Sync to Elasticsearch
-		ProductDocument document = mapToDocument(product);
+		ProductDocument document = productMapper.toDocument(product);
 		productDocumentRepo.save(document);
 
 		refresh(product);
@@ -115,7 +117,7 @@ public class ProductServiceImpl implements ProductService {
 		product = productRepo.saveAndFlush(product);
 
 		// Sync to Elasticsearch (soft delete by setting active=false)
-		ProductDocument document = mapToDocument(product);
+		ProductDocument document = productMapper.toDocument(product);
 		productDocumentRepo.save(document);
 
 		log.info("Soft Deleted Product({})", id);
@@ -126,50 +128,40 @@ public class ProductServiceImpl implements ProductService {
 		// Build Elasticsearch query based on filter params
 		Query.Builder queryBuilder = new Query.Builder();
 
-		if (params.getName() != null && !params.getName().isEmpty()) {
-			queryBuilder.match(m -> m.field("name").query(params.getName()));
+		if (StringUtils.hasText(params.getName())) {
+			queryBuilder.match(m -> m.field(Product_.NAME).query(params.getName()));
 		}
 
 		if (params.getMinUnitPrice() != null) {
-			RangeQuery rangeQuery = RangeQuery.of(r -> r.field("unitPrice").gte(params.getMinUnitPrice().toString()));
+			RangeQuery rangeQuery = RangeQuery
+					.of(r -> r.field(Product_.UNIT_PRICE).gte(params.getMinUnitPrice().toString()));
 			queryBuilder.range(rangeQuery);
 		}
 
 		if (params.getMaxUnitPrice() != null) {
-			RangeQuery rangeQuery = RangeQuery.of(r -> r.field("unitPrice").lte(params.getMaxUnitPrice().toString()));
+			RangeQuery rangeQuery = RangeQuery
+					.of(r -> r.field(Product_.UNIT_PRICE).lte(params.getMaxUnitPrice().toString()));
 			queryBuilder.range(rangeQuery);
 		}
 
 		// Only active products
-		TermQuery activeQuery = TermQuery.of(t -> t.field("active").value(true));
-		queryBuilder.term(activeQuery);
+		if (params.getIsActive() != null) {
+			TermQuery activeQuery = TermQuery.of(t -> t.field(Product_.IS_ACTIVE).value(params.getIsActive()));
+			queryBuilder.term(activeQuery);
+		}
+
+		if (StringUtils.hasText(params.getDescription())) {
+			queryBuilder.match(m -> m.field(Product_.DESCRIPTION).query(params.getDescription()));
+		}
 
 		NativeQuery nativeQuery = NativeQuery.builder().withQuery(queryBuilder.build()).withPageable(pageable).build();
 
 		SearchHits<ProductDocument> searchHits = elasticsearchOperations.search(nativeQuery, ProductDocument.class);
 
 		List<ProductVo> productVos = searchHits.getSearchHits().stream().map(SearchHit::getContent)
-				.map(this::mapDocumentToVo).collect(Collectors.toList());
+				.map(productMapper::toBriefVo).collect(Collectors.toList());
 
 		return new PageImpl<>(productVos, pageable, searchHits.getTotalHits());
-	}
-
-	private ProductDocument mapToDocument(Product product) {
-		ProductDocument document = new ProductDocument();
-		document.setId(product.getId());
-		document.setName(product.getName());
-		document.setUnitPrice(product.getUnitPrice());
-		document.setActive(product.isActive());
-		return document;
-	}
-
-	private ProductVo mapDocumentToVo(ProductDocument document) {
-		ProductVo vo = new ProductVo();
-		vo.setId(document.getId());
-		vo.setName(document.getName());
-		vo.setUnitPrice(document.getUnitPrice());
-		vo.setActive(document.isActive());
-		return vo;
 	}
 
 }
