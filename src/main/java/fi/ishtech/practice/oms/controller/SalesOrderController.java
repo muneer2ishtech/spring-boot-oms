@@ -60,6 +60,7 @@ public class SalesOrderController {
 	 *
 	 * @param params   - {@link SalesOrderFilterParams}
 	 * @param pageable - {@link Pageable}
+	 *
 	 * @return {@link ResponseEntity}&lt;{@link Page}&lt;{@link SalesOrderVo}&gt;&gt;
 	 */
 	@GetMapping(path = "/api/v1/sales-orders", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -79,8 +80,10 @@ public class SalesOrderController {
 	}
 
 	/**
+	 * Find SaleOrder by id
 	 *
 	 * @param salesOrderId
+	 *
 	 * @return {@link ResponseEntity}&lt;{@link SalesOrderVo}&gt;
 	 */
 	@GetMapping(path = "/api/v1/sales-orders/{salesOrderId}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -97,6 +100,7 @@ public class SalesOrderController {
 	 * Creates new SalesOrder
 	 *
 	 * @param salesOrderVo - SalesOrderVo
+	 *
 	 * @return {@link ResponseEntity}&lt;{@link Long}&gt;
 	 */
 	// @formatter:off
@@ -128,6 +132,7 @@ public class SalesOrderController {
 	 * Creates new SalesOrderItem
 	 *
 	 * @param salesOrderItemVo - SalesOrderItemVo
+	 *
 	 * @return {@link ResponseEntity}&lt;{@link Long}&gt;
 	 */
 	// @formatter:off
@@ -170,6 +175,14 @@ public class SalesOrderController {
 		return ResponseEntity.status(HttpStatus.OK).location(uri).body(result.getId());
 	}
 
+	/**
+	 * Delete existing SalesOrderItem and updates parent SalesOrder amounts and discounts
+	 *
+	 * @param salesOrderItemId
+	 * @param quantity
+	 *
+	 * @return {@link ResponseEntity}&lt;{@link Void}&gt;
+	 */
 	// @formatter:off
 	@Operation(summary = "Delete existing SalesOrderItem and Updates parent SalesOrder amounts and discounts")
 	@ApiResponses(value = {
@@ -190,6 +203,14 @@ public class SalesOrderController {
 		return new ResponseEntity<Void>(HttpStatus.GONE);
 	}
 
+	/**
+	 * Update quantity in existing SalesOrderItem and its amounts updates parent SalesOrder amounts and discounts
+	 *
+	 * @param salesOrderItemId
+	 * @param quantity
+	 *
+	 * @return {@link ResponseEntity}&lt;{@link Void}&gt;
+	 */
 	@PatchMapping(path = "/api/v1/sales-orders/sales-order-items/{salesOrderItemId}")
 	public ResponseEntity<Void> updateSalesOrderItemQuantityById(@PathVariable Long salesOrderItemId,
 			@RequestParam Integer quantity) {
