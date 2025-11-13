@@ -47,6 +47,23 @@ public class ProductController {
 	private ProductService productService;
 
 	/**
+	 * Finds Product(s) by elastic search
+	 *
+	 * @param params   - {@link ProductFilterParams}
+	 * @param pageable - {@link Pageable}
+	 *
+	 * @return {@link ResponseEntity}&lt;{@link Page}&lt;{@link ProductVo}&gt;&gt;
+	 */
+	@GetMapping(path = "/api/v1/elastic/products", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Page<ProductVo>> elasticSearchProducts(@Valid ProductFilterParams params, Pageable pageable) {
+		log.trace("ProductFilterParams:{}", params);
+
+		var result = productService.searchFromElasticsearch(params, pageable);
+
+		return ResponseEntity.ok(result);
+	}
+
+	/**
 	 * Finds Product(s) by search filters and pagination
 	 *
 	 * @param params   - {@link ProductFilterParams}

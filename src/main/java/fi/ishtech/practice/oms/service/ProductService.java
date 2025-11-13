@@ -2,9 +2,13 @@ package fi.ishtech.practice.oms.service;
 
 import jakarta.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import fi.ishtech.base.service.BaseStandardService;
 import fi.ishtech.practice.oms.entity.Product;
 import fi.ishtech.practice.oms.payload.ProductVo;
+import fi.ishtech.practice.oms.payload.filter.ProductFilterParams;
 
 /**
  *
@@ -28,5 +32,14 @@ public interface ProductService extends BaseStandardService<Product, ProductVo> 
 	 * @param id
 	 */
 	void deleteById(Long id);
+
+	/**
+	 * Searches products from Elasticsearch based on filter params.
+	 *
+	 * @param params   - {@link ProductFilterParams}
+	 * @param pageable - {@link Pageable}
+	 * @return {@link Page<ProductVo>}
+	 */
+	Page<ProductVo> searchFromElasticsearch(ProductFilterParams params, Pageable pageable);
 
 }
