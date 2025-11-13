@@ -12,6 +12,7 @@ import fi.ishtech.practice.oms.entity.Product;
 import fi.ishtech.practice.oms.payload.ProductVo;
 
 /**
+ * Mapper for {@link ProductVo} to {@link Product} entity and vice-versa<br>
  *
  * @author Muneer Ahmed Syed
  */
