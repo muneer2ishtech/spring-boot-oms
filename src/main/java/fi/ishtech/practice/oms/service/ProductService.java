@@ -31,7 +31,7 @@ public interface ProductService extends BaseStandardService<Product, ProductVo> 
 	 *
 	 * @param id
 	 */
-	void deleteById(Long id);
+	void deactivateById(Long id);
 
 	/**
 	 * Searches products from Elasticsearch based on filter params.
