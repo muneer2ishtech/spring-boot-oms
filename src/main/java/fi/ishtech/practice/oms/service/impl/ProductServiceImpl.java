@@ -133,15 +133,13 @@ public class ProductServiceImpl implements ProductService {
 		}
 
 		if (params.getMinUnitPrice() != null) {
-			RangeQuery rangeQuery = RangeQuery
-					.of(r -> r.field(Product_.UNIT_PRICE).gte(params.getMinUnitPrice().toString()));
-			queryBuilder.range(rangeQuery);
+			queryBuilder.range(RangeQuery
+					.of(r -> r.number(f -> f.field(Product_.UNIT_PRICE).gte(params.getMinUnitPrice().doubleValue()))));
 		}
 
 		if (params.getMaxUnitPrice() != null) {
-			RangeQuery rangeQuery = RangeQuery
-					.of(r -> r.field(Product_.UNIT_PRICE).lte(params.getMaxUnitPrice().toString()));
-			queryBuilder.range(rangeQuery);
+			queryBuilder.range(RangeQuery
+					.of(r -> r.number(f -> f.field(Product_.UNIT_PRICE).gte(params.getMaxUnitPrice().doubleValue()))));
 		}
 
 		// Only active products
