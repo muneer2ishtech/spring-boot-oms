@@ -76,7 +76,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public void deleteById(Long id) {
+	public void deactivateById(Long id) {
 		Product product = this.findOneByIdOrElseThrow(id);
 
 		product.setActive(false);

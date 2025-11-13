@@ -153,7 +153,7 @@ public class ProductController {
 	public ResponseEntity<Void> deleteById(@PathVariable Long id) {
 		log.debug("Deleting Product({})", id);
 
-		productService.deleteById(id);
+		productService.deactivateById(id);
 
 		return new ResponseEntity<Void>(HttpStatus.GONE);
 	}
