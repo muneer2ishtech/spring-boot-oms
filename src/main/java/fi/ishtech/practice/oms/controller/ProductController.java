@@ -47,7 +47,7 @@ public class ProductController {
 	private ProductService productService;
 
 	/**
-	 * Gets public info of companies found by filter params
+	 * Finds Product(s) by search filters and pagination
 	 *
 	 * @param params   - {@link ProductFilterParams}
 	 * @param pageable - {@link Pageable}

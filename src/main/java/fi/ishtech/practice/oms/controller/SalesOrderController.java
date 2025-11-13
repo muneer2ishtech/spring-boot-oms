@@ -56,7 +56,7 @@ public class SalesOrderController {
 	private final SalesOrderItemService salesOrderItemService;
 
 	/**
-	 * Gets public info of companies found by filter params
+	 * Finds SalesOrder(s) by search filters and pagination
 	 *
 	 * @param params   - {@link SalesOrderFilterParams}
 	 * @param pageable - {@link Pageable}
