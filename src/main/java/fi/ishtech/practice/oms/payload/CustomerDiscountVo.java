@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.payload;
 
+import java.io.Serial;
 import java.math.BigDecimal;
 
 import jakarta.validation.constraints.NotNull;
@@ -21,6 +22,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class CustomerDiscountVo extends BaseStandardEntityVo {
 
+	@Serial
 	private static final long serialVersionUID = 2888935904071079798L;
 
 	@NotNull

@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.spec;
 
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -17,6 +18,7 @@ import fi.ishtech.practice.oms.payload.filter.ProductFilterParams;
  */
 public class ProductSpec extends BaseStandardSpec<Product, ProductFilterParams> {
 
+	@Serial
 	private static final long serialVersionUID = -5813949413189524814L;
 
 	public ProductSpec(ProductFilterParams params) {

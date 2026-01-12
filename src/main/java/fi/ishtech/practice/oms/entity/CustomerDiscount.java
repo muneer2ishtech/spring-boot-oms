@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.entity;
 
+import java.io.Serial;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
@@ -39,6 +40,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class CustomerDiscount extends BaseStandardEntity {
 
+	@Serial
 	private static final long serialVersionUID = -4957579670535741482L;
 
 	@Column(name = "customer_id", nullable = false, insertable = true, updatable = false)

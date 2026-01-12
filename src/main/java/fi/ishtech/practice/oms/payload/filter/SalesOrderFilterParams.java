@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.payload.filter;
 
+import java.io.Serial;
 import java.math.BigDecimal;
 
 import jakarta.validation.constraints.Positive;
@@ -20,6 +21,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class SalesOrderFilterParams extends BaseStandardEntityFilterParams {
 
+	@Serial
 	private static final long serialVersionUID = -8560701313589032650L;
 
 	@Positive
