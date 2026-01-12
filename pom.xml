@@ -44,7 +44,7 @@
 	<properties>
 		<java.version>25</java.version>
 
-		<ishtech-base-jpa.version>3.0.0</ishtech-base-jpa.version>
+		<ishtech-base-jpa.version>3.1.0</ishtech-base-jpa.version>
 		<ishtech-springboot-jwtauth.version>0.6.0-SNAPSHOT</ishtech-springboot-jwtauth.version>
 
 		<mapstruct.version>1.6.3</mapstruct.version>
