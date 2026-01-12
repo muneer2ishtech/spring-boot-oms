@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.spec;
 
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -21,6 +22,7 @@ import fi.ishtech.springboot.jwtauth.payload.params.UserProfileFilterParams;
  */
 public class SalesOrderSpec extends BaseStandardSpec<SalesOrder, SalesOrderFilterParams> {
 
+	@Serial
 	private static final long serialVersionUID = -4027068875044076203L;
 
 	public SalesOrderSpec(SalesOrderFilterParams params) {

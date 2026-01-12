@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.spec;
 
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -24,6 +25,7 @@ import fi.ishtech.springboot.jwtauth.payload.params.UserProfileFilterParams;
  */
 public class CustomerDiscountSpec extends BaseStandardSpec<CustomerDiscount, CustomerDiscountFilterParams> {
 
+	@Serial
 	private static final long serialVersionUID = -2693167671940681473L;
 
 	public CustomerDiscountSpec(CustomerDiscountFilterParams params) {

@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.spec;
 
+import java.io.Serial;
 import java.util.List;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -24,6 +25,7 @@ import fi.ishtech.practice.oms.payload.filter.SalesOrderItemFilterParams;
  */
 public class SalesOrderItemSpec extends BaseStandardSpec<SalesOrderItem, SalesOrderItemFilterParams> {
 
+	@Serial
 	private static final long serialVersionUID = -1373909197677613927L;
 
 	public SalesOrderItemSpec(SalesOrderItemFilterParams params) {

@@ -1,5 +1,6 @@
 package fi.ishtech.practice.oms.entity;
 
+import java.io.Serial;
 import java.math.BigDecimal;
 
 import jakarta.persistence.Column;
@@ -30,6 +31,7 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class Product extends BaseStandardEntity {
 
+	@Serial
 	private static final long serialVersionUID = 5200300290570821077L;
 
 	@Column(nullable = false, insertable = true, updatable = false, unique = true)
