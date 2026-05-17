@@ -1,5 +1,13 @@
-# For User Sign-up and sign-in
-- See [ishtech-springboot-jwtauth's CURL-INFO](https://github.com/IshTech/ishtech-springboot-jwtauth/blob/main/CURL-INFO.md)
+#
+
+- Check and use the correct port for the API calls.
+
+- For API names and descriptions:
+    - See [API-INFO.md](./API-INFO.md)
+
+# Auth APIs
+- For Authentication & Authorization APIs:
+    - See [ishtech-springboot-jwtauth/CURL-INFO.md](https://github.com/IshTech/ishtech-springboot-jwtauth/blob/main/CURL-INFO.md)
 
 
 # Products
