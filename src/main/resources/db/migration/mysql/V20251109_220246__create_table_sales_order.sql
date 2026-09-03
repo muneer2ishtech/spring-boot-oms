@@ -1,6 +1,6 @@
 CREATE TABLE t_sales_order (
   id                 BIGINT UNSIGNED  NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  customer_id        BIGINT UNSIGNED  NOT NULL,
+  customer_id        BIGINT           NOT NULL,
   orig_total_amount  DECIMAL(15, 2)   NOT NULL,
   total_amount       DECIMAL(15, 2)   NOT NULL,
   discount_percent   DECIMAL(5, 4)        NULL,
