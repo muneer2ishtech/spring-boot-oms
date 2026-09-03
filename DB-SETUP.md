@@ -2,7 +2,13 @@
 
 ### Local
 - You need local instance or docker of MariaDB / MySQL
+    - MariaDB is the default, MySQL is the alternative
     - To run using MySQL instead of MariaDB, comment out MariaDB portions and uncomment MySQL portions in `pom.xml` and `application-xxx.properties`
+
+- Default ports
+    - MariaDB `23306`
+    - MySQL `13306`
+    - Check on which port your DB is actually running and update `spring.datasource.url` in `application-xxx.properties` accordingly
 
 - I have customized docker for various databases
     - For MariaDB
